@@ -24,6 +24,7 @@ class Index extends Controller
 
     public function weclome()
     {
+//       $res =  \phpmailer\Email::send('844216765@qq.com','tp5-email','success-haha');
         return '欢迎来到o2o主后台首页！';
     }
 }

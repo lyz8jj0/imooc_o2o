@@ -13,3 +13,4 @@ composer.lock
 #配置文件
 application/database.php
 application/config.php
+application/extra
