@@ -57,3 +57,18 @@ function bisRegister($status)
     }
     return $str;
 }
+
+/**
+ * 通用分布样式
+ *
+ * @param $obj
+ *
+ * @return string
+ */
+function pagination($obj)
+{
+    if (!$obj) {
+        return '';
+    }
+    return '<div class="cl pd-5 bg-1 bk-gray mt-20 tp5-o2o">' . $obj->render() . '</div>';
+}
