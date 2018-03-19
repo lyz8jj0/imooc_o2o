@@ -12,6 +12,11 @@ class City extends Controller
         $this->obj = model("City");
     }
 
+    /**
+     * 商户注册页面的所属城市
+     *
+     * @return array
+     */
     public function getCitysByParentId()
     {
         $id = input('post.id');

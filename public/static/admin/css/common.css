@@ -1,3 +1,4 @@
+/*分页*/
 .tp5-o2o .pagination li {
     display: inline;
     padding-left: 10px;
@@ -9,4 +10,10 @@
 
 .pagination .disabled {
     color: #888888
+}
+
+/*商户简介*/
+.bis_introduction {
+    width: 80%;
+    height: 300px;
 }
