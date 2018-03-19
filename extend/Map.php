@@ -9,12 +9,13 @@ class Map
      * 根据地址来获取经纬度
      *
      * @param $address
+     * @return array
      */
     public static function getLngLat($address)
     {
 //        http://api.map.baidu.com/geocoder/v2/?address=北京市海淀区上地十街10号&output=json&ak=您的ak&callback=showLocation //GET请求
         if (!$address) {
-            return '';
+            return [];
         }
         $data = [
             'address' => $address,
@@ -25,8 +26,13 @@ class Map
         // 1 file_get_contents($url);
         // 2 curl
         $result = doCurl($url);
-        return $result;
+        if ($result) {
+            return json_decode($result, true);
+        } else {
+            return [];
+        }
     }
+//        return $result;
 
     //http://api.map.baidu.com/staticimage/v2
 
@@ -34,11 +40,13 @@ class Map
      * 根据经纬度或者地址来获取百度地图
      *
      * @param $center
+     *
+     * @return array
      */
     public static function staticimage($center)
     {
         if (!$center) {
-            return '';
+            return [];
         }
         $data = [
             'ak' => config('map.ak'),
@@ -51,6 +59,11 @@ class Map
         // 1 file_get_contents($url);
         // 2 curl
         $result = doCurl($url);
-        return $result;
+        if ($result) {
+            return json_decode($result, true);
+        } else {
+            return [];
+        }
+//        return $result;
     }
 }
