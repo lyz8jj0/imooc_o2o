@@ -24,7 +24,7 @@ $(function() {
         'onUploadSuccess': function (file, data, response) {
             var obj = JSON.parse(data);
             $("#upload_org_code_img_other").attr("src",obj.data);
-            $("#file_upload_image").attr("value",obj.data);
+            $("#file_upload_image_other").attr("value",obj.data);
             $("#upload_org_code_img_other").show();
         }
     });

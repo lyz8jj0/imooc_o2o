@@ -72,3 +72,42 @@ function pagination($obj)
     }
     return '<div class="cl pd-5 bg-1 bk-gray mt-20 tp5-o2o">' . $obj->render() . '</div>';
 }
+
+//error_reporting(E_ERROR | E_WARNING | E_PARSE);
+/**
+ *获取后台点击详情时的二级城市
+ *
+ * @param $path
+ *
+ * @return bool|string
+ * @throws Exception
+ */
+function getSeCityName($path)
+{
+    if (empty($path)) {
+        return '';
+    }
+    if (preg_match('/,/', $path)) {
+        $cityPath = explode(',', $path);
+        $cityId = $cityPath[1];
+    } else {
+        $cityId = $path;
+    }
+    $city = model('City')->get($cityId);
+    return $city->name;
+}
+
+//function getSeCategoryName($path)
+//{
+//    if (empty($path)) {
+//        return '';
+//    }
+//    if (preg_match('/,/', $path)) {
+//        $categoryPath = explode(',', $path);
+//        $categoryPath = $categoryPath[1];
+//    } else {
+//        $categoryPath = $path;
+//    }
+//    $category = model('Category')->get($categoryPath);
+//    return $category->name;
+//}
