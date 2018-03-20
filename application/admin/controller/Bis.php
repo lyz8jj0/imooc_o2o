@@ -15,7 +15,18 @@ class Bis extends Controller
     {
         $this->obj = model("Bis");
     }
-
+    /**
+     * 入驻申请列表
+     *
+     * @return mixed
+     */
+    public function index()
+    {
+        $bis = $this->obj->getBisByStatus(1);
+        return $this->fetch('', [
+            'bis' => $bis
+        ]);
+    }
     /**
      * 入驻申请列表
      *
