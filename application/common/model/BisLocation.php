@@ -6,14 +6,14 @@ use think\Exception;
 class BisLocation extends BaseModel
 {
     /**
-     * 通过不同门店的bis_id获取本店的商户门店列表
+     * 通过不同门店对应的bis_id获取本店的商户门店列表
      *
      * @param int $is_main
      *
      * @return \think\Paginator
      * @throws Exception
      */
-    public function getBisLocationByIsMain($bisId)
+    public function getBisLocationByBisId($bisId)
     {
         $order = [
             'id' => 'desc'
@@ -24,6 +24,26 @@ class BisLocation extends BaseModel
         $result = $this->where($data)
             ->order($order)
             ->paginate(10);
+        return $result;
+    }
+
+    /**
+     * 团购商品添加里面的门店列表
+     *
+     * @param $bisId
+     *
+     * @return false|\PDOStatement|string|\think\Collection
+     * @throws Exception
+     */
+    public function getNormalLocationByBisId($bisId)
+    {
+        $data = [
+            'bis_id' => $bisId,
+            'status' => 1,
+        ];
+        $result = $this->where($data)
+            ->order('id', 'desc')
+            ->select();
         return $result;
     }
 }

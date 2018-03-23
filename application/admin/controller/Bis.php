@@ -15,8 +15,9 @@ class Bis extends Controller
     {
         $this->obj = model("Bis");
     }
+
     /**
-     * 入驻申请列表
+     * 商户列表
      *
      * @return mixed
      */
@@ -27,6 +28,7 @@ class Bis extends Controller
             'bis' => $bis
         ]);
     }
+
     /**
      * 入驻申请列表
      *

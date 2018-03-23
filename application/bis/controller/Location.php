@@ -24,7 +24,7 @@ class Location extends Base
     }
 
     /**
-     *  列表页
+     *  门店列表页
      *
      * @return mixed
      */
@@ -32,8 +32,7 @@ class Location extends Base
     {
         //通过session获取本店bisId
         $bisId = $this->getLoginUser()->bis_id;
-        print_r($bisId);
-        $bisLocation = $this->obj->getBisLocationByIsMain($bisId);
+        $bisLocation = $this->obj->getBisLocationByBisId($bisId);
         return $this->fetch('', [
             'bisLocation' => $bisLocation
         ]);
@@ -117,6 +116,9 @@ class Location extends Base
         ]);
     }
 
+    /**
+     * o2o平台-商户中心 删除门店
+     */
     public function status()
     {
         $data = input('get.');
