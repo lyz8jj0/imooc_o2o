@@ -13,7 +13,7 @@ class Category extends Controller
     }
 
     /**
-     * 商户注册页面的所属分类
+     * 商户注册页面下拉框的所属分类
      *
      * @return array
      */

@@ -13,7 +13,7 @@ class City extends Controller
     }
 
     /**
-     * 商户注册页面的所属城市
+     * 商户注册页面下拉框的所属城市
      *
      * @return array
      */

@@ -17,7 +17,7 @@ class Category extends Model
     }
 
     /**
-     * 添加分类
+     * 集团后台 添加分类页面
      *
      * @return |array
      * @throws \Exception
@@ -38,7 +38,7 @@ class Category extends Model
     }
 
     /**
-     * 获取一级分类
+     * 集团后台 添加分类中的分类栏目 （获取一级分类）
      *
      * @return |array
      * @throws \Exception
@@ -60,7 +60,7 @@ class Category extends Model
     }
 
     /**
-     * 获取一级生活服务
+     * 商户入驻申请下的所属分类（二级分类）
      *
      * @return |array()
      * @throws Exception

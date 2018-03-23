@@ -80,7 +80,7 @@ $(".categoryId").change(function () {
             data = result.data;
             category_html = "";
             $(data).each(function () {
-                category_html += '<input name="se_category_id[]" type="checkbox" id="checkbox-moban value="' + this.id + '"/>' + this.name;
+                category_html += '<input name="se_category_id[]" type="checkbox" id="checkbox-moban" value="' + this.id + '"/>' + this.name;
                 category_html += '<label for="checkbox-moban">&nbsp;</label>';
             });
             $('.se_category_id').html(category_html);

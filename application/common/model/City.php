@@ -7,7 +7,7 @@ use think\Model;
 class City extends Model
 {
     /**
-     * 获取一级城市分类
+     * 商户入驻申请下的所属城市(二级分类)
      *
      * @return |array()
      * @throws Exception

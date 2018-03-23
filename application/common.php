@@ -97,17 +97,25 @@ function getSeCityName($path)
     return $city->name;
 }
 
-//function getSeCategoryName($path)
-//{
-//    if (empty($path)) {
-//        return '';
-//    }
-//    if (preg_match('/,/', $path)) {
-//        $categoryPath = explode(',', $path);
-//        $categoryPath = $categoryPath[1];
-//    } else {
-//        $categoryPath = $path;
-//    }
-//    $category = model('Category')->get($categoryPath);
-//    return $category->name;
-//}
+/**
+ * 获取后台点击详情时的二级分类
+ *
+ * @param $path
+ *
+ * @return bool|string
+ * @throws Exception
+ */
+function getSeCategoryName($path)
+{
+    if (empty($path)) {
+        return '';
+    }
+    if (preg_match('/,/', $path)) {
+        $categoryPath = explode(',', $path);
+        $categoryPath = $categoryPath[1];
+    } else {
+        $categoryPath = $path;
+    }
+    $category = model('Category')->get($categoryPath);
+    return $category->name;
+}
