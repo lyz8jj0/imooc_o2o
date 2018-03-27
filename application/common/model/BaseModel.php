@@ -16,4 +16,17 @@ class BaseModel extends Model
         $this->save($data); //保存信息
         return $this->id;  //返回主键id
     }
+
+    /**
+     * 更新
+     *
+     * @param $data (要更新的内容)
+     * @param $id   (更新的主键id)
+     *
+     * @return false|int
+     */
+    public function updateById($data, $id)
+    {
+        return $this->allowField(true)->save($data, ['id' => $id]);
+    }
 }

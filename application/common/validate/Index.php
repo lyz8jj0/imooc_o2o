@@ -12,6 +12,7 @@ class Index extends Validate
         ['repassword', 'require', '确认密码不存在'],
     ];
     protected $scene = [
-        'register' => ['username', 'email', 'password', 'repassword']
+        'register' => ['username', 'email', 'password', 'repassword'],
+        'login' => ['username', 'password'],
     ];
 }

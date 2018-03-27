@@ -19,4 +19,21 @@ class User extends BaseModel
         $data['status'] = 1;
         return $this->allowField(true)->save($data);
     }
+
+    /**
+     * 根据用户名获取用户信息
+     *
+     * @param $username
+     *
+     * @throws \Exception
+     */
+    public function getUserByUsername($username)
+    {
+        if (!$username) {
+            exception('用户名不合法');
+        }
+        $data = ['username' => $username];
+        $result = $this->where($data)->find();
+        return $result;
+    }
 }
