@@ -5,8 +5,8 @@
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>注册</title>
-    <link rel="stylesheet" href="__PUBLIC__/index/css/base.css" />
-    <link rel="stylesheet" href="__PUBLIC__/index/css/register.css" />
+    <link rel="stylesheet" href="__PUBLIC__/index/css/base.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/index/css/register.css"/>
     <script type="text/javascript" src="__PUBLIC__/index/js/html5shiv.js"></script>
     <script type="text/javascript" src="__PUBLIC__/index/js/respond.min.js"></script>
     <script type="text/javascript" src="__PUBLIC__/index/js/jquery-1.11.3.min.js"></script>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="content">
-        <form>
+        <form action="{:url('user/register')}" method="post">
             <p class="pass-form-item">
                 <label class="pass-label">用户名</label>
                 <input type="text" name="userName" class="pass-text-input" placeholder="请设置用户名">
@@ -46,7 +46,8 @@
             </p>
             <p class="pass-form-item">
                 <label class="pass-label">验证码</label>
-                <input type="text" name="verifyCode" class="pass-text-input " placeholder="请输入验证码">
+                <input type="text" name="verifycode" class="pass-text-input " placeholder="请输入验证码">
+            <div>{:captcha_img()}</div>
             </p>
 
             <p class="pass-form-item">
