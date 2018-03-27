@@ -15,7 +15,16 @@ class Featured extends Controller
 
     public function index()
     {
-        return $this->fetch();
+        //获取推荐位类别
+        $types = config('featured.featured_type');
+        $type = input('get.type', 0, 'intval');
+        //获取列表数
+        $results = $this->obj->getFeaturedByType($type);
+        return $this->fetch('', [
+            'types' => $types,
+            'results' => $results,
+            'type' => $type
+        ]);
     }
 
     public function add()
