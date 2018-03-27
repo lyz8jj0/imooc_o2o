@@ -4,7 +4,7 @@ namespace app\admin\controller;
 use think\Controller;
 use think\Validate;
 
-class Featured extends Controller
+class Featured extends Base
 {
     private $obj;
 
@@ -52,5 +52,22 @@ class Featured extends Controller
             ]);
         }
     }
+
+//    public function status()
+//    {
+//        //获取值
+//        $data = input('get.');
+//        //tp5 validate 做严格验证
+//        $validate = Validate('Featured');
+//        if (!$validate->scene('status')->check($data)) {
+//            $this->error($validate->getError());
+//        }
+//        $res = $this->obj->save(['status' => $data['status']], ['id' => $data['id']]);
+//        if ($res) {
+//            $this->success('更新成功');
+//        } else {
+//            $this->error('更新失败');
+//        }
+//    }
 }
 

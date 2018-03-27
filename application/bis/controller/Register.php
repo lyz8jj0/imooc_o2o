@@ -109,6 +109,14 @@ class Register extends Controller
         $this->success('申请成功!', url('register/waiting', ['id' => $bisId]));
     }
 
+    /**
+     * 注册完成等待页面
+     *
+     * @param $id
+     *
+     * @return mixed
+     * @throws \think\exception\DbException
+     */
     public function waiting($id)
     {
         if (empty($id)) {

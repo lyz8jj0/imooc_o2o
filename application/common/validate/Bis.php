@@ -28,6 +28,11 @@ class Bis extends Validate
             'bank_user',
             'faren',
             'faren_tel'
-        ] //商户入驻申请
+        ], //商户入驻申请
+
+        'addLocation' => [
+            'name',
+            'city_id',
+        ] //商户中心的新增门店
     ];
 }

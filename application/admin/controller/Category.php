@@ -3,7 +3,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 
-class Category extends Controller
+class Category extends Base
 {
     private $obj;
 
@@ -97,22 +97,22 @@ class Category extends Controller
         }
     }
 
-    /**
-     * 修改状态
-     */
-    public function status()
-    {
-        $data = input('get.');
-        $validate = validate('Category');
-        if (!$validate->scene('status')->check($data)) {
-            $this->error($validate->getError());
-        }
-        $res = $this->obj->save(['status' => $data['status']], ['id' => $data['id']]);
-        if ($res) {
-            $this->success('状态更新成功');
-        } else {
-            $this->error('状态更新失败');
-        }
-    }
+//    /**
+//     * 修改状态
+//     */
+//    public function status()
+//    {
+//        $data = input('get.');
+//        $validate = validate('Category');
+//        if (!$validate->scene('status')->check($data)) {
+//            $this->error($validate->getError());
+//        }
+//        $res = $this->obj->save(['status' => $data['status']], ['id' => $data['id']]);
+//        if ($res) {
+//            $this->success('状态更新成功');
+//        } else {
+//            $this->error('状态更新失败');
+//        }
+//    }
 }
 

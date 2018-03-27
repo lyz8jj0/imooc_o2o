@@ -8,6 +8,7 @@
 namespace app\bis\controller;
 
 use think\Exception;
+use think\Validate;
 
 class Location extends Base
 {
@@ -46,8 +47,13 @@ class Location extends Base
     public function add()
     {
         if (request()->isPost()) {
-            //第一点 检验数据 tp5 validate机制(待完成 )
             $data = input('post.');
+            //第一点 检验数据 tp5 validate机制
+            $validate = Validate('Bis');
+            $result = $validate->scene('addLocation')->check($data);
+            if (!$result) {
+                $this->error($validate->getError());
+            }
             $bisId = $this->getLoginUser()->bis_id;
             $data['cat'] = '';
             if (!empty($data['se_category_id'])) {
