@@ -10,7 +10,6 @@ class BaseModel extends Model
 {
     protected $autoWriteTimestamp = true;
 
-    //增加分类保存
     public function add($data)
     {
         $data['status'] = 0;
