@@ -22,6 +22,8 @@ function status($status)
 }
 
 /**
+ * 百度地图
+ *
  * @param       $url
  * @param int   $type 0 get 1 post
  * @param array $data

@@ -30,7 +30,7 @@ class Register extends Controller
         if (!request()->isPost()) {
             $this->error('请求错误');
         }
-        //获取表单的值
+        //获取表单的值 通过tp自带的方法结合php的方法来处理角本攻击(XSS)
         $data = input('post.');
         //检验数据
         $validate = validate('bis');
