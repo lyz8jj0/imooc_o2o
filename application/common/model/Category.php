@@ -78,4 +78,55 @@ class Category extends Model
             ->order($order)
             ->select();
     }
+
+    /**
+     * 获取首页推荐当中的一级分类数据展示
+     *
+     * @param int $id    (0为一级分类)
+     * @param int $limit (展示默认5条)
+     *
+     * @return false|\PDOStatement|string|\think\Collection
+     * @throws Exception
+     */
+    public function getNormalRecommendCategoryByParentId($id = 0, $limit = 5)
+    {
+        $data = [
+            'parent_id' => $id,
+            'status' => 1,
+        ];
+        $order = [
+            'listorder' => 'desc',
+            'id' => 'desc'
+        ];
+        $result = $this->where($data)
+            ->order($order);
+        if ($limit) {
+            $result = $result->limit($limit);
+        }
+        return $result->select();
+    }
+
+    /**
+     * 获取首页推荐当中的二级分类数据展示
+     *
+     * @param $ids (通过一级分类来获取二级分类)
+     *
+     * @return false|\PDOStatement|string|\think\Collection
+     * @throws Exception
+     */
+    public function getNormalCategoryIdParentId($ids)
+    {
+        $data = [
+            'parent_id' => ['in', $ids],
+            'status' => 1,
+        ];
+        $order = [
+            'listorder' => 'desc',
+            'id' => 'desc'
+        ];
+        $result = $this->where($data)
+            ->order($order)
+            ->select();
+        return $result;
+    }
 }
