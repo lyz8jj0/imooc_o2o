@@ -46,4 +46,25 @@ class BisLocation extends BaseModel
             ->select();
         return $result;
     }
+
+    /**
+     *  获取o2o平台下的门店入驻申请信息
+     *
+     * @param $status (0为申请时的状态)
+     *
+     * @throws Exception
+     */
+    public function getStoreByStatus($status = 0)
+    {
+        $data = [
+            'status' => $status,
+        ];
+        $order = [
+            'id' => 'desc',
+        ];
+        $result = $this->where($data)
+            ->order($order)
+            ->select();
+        return $result;
+    }
 }

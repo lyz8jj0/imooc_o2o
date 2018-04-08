@@ -7,9 +7,11 @@ use think\Model;
 class City extends Model
 {
     /**
-     * 商户入驻申请下的所属城市(二级分类)
+     * 下拉框中的城市列表
      *
-     * @return |array()
+     * @param int $parent_id (默认查询的是一级城市)
+     *
+     * @return false|\PDOStatement|string|\think\Collection
      * @throws Exception
      */
     public function getNormalCityByParentId($parent_id = 0)

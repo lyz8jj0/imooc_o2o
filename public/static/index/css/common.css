@@ -362,3 +362,10 @@
     margin-right: 0;
     background-repeat: no-repeat;
 }
+
+/*script信息输入框*/
+.information {
+    width: 80%;
+    height: 300px;
+}
+

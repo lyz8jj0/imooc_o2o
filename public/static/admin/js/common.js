@@ -84,6 +84,7 @@ $(".categoryId").change(function () {
                 category_html += '<label for="checkbox-moban">&nbsp;</label>';
             });
             $('.se_category_id').html(category_html);
+            $('.category_name_show').html('');
         } else if (result.status == 0) {
             $('.se_category_id').html('');
         }

@@ -89,6 +89,7 @@ function getSeCityName($path)
     if (empty($path)) {
         return '';
     }
+    //preg_match — 执行匹配正则表达式
     if (preg_match('/,/', $path)) {
         $cityPath = explode(',', $path);
         $cityId = $cityPath[1];
@@ -99,25 +100,48 @@ function getSeCityName($path)
     return $city->name;
 }
 
+///**
+// * 获取后台点击详情时的二级分类
+// *
+// * @param $path
+// *
+// * @return bool|string
+// * @throws Exception
+// */
+//function getSeCategoryName($path)
+//{
+//    if (empty($path)) {
+//        return '';
+//    }
+//    if (preg_match('/,/', $path)) {
+//        $categoryPath = explode(',', $path);
+////        $categoryPath = $categoryPath[0];
+//        print_r($path);
+//        echo"<hr>";
+//        print_r($categoryPath);
+//        echo"<hr>";
+//    } else {
+//        $categoryPath = $path;
+//    }
+//    $category = model('Category')->get($categoryPath);
+////    print_r($categoryPath);die;
+//    return $category->name;
+//}
+
 /**
- * 获取后台点击详情时的二级分类
+ * 获取分店个数
  *
- * @param $path
+ * @param $ids
  *
- * @return bool|string
- * @throws Exception
+ * @return int
  */
-function getSeCategoryName($path)
+function countLocation($ids)
 {
-    if (empty($path)) {
-        return '';
+    if (!$ids) {
+        return 1;
     }
-    if (preg_match('/,/', $path)) {
-        $categoryPath = explode(',', $path);
-        $categoryPath = $categoryPath[1];
-    } else {
-        $categoryPath = $path;
+    if (preg_match('/,/', $ids)) { //检测是否有逗号
+        $arr = explode(',', $ids); //$ids中的数据有','分开
+        return count($arr);
     }
-    $category = model('Category')->get($categoryPath);
-    return $category->name;
 }

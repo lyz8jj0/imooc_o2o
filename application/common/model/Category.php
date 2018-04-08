@@ -60,9 +60,11 @@ class Category extends Model
     }
 
     /**
-     * 商户入驻申请下的所属分类（二级分类）
+     * 获取详情下的所属分类(二级分类) 通过parentId
      *
-     * @return |array()
+     * @param int $parent_id 默认查询没有父类的
+     *
+     * @return false|\PDOStatement|string|\think\Collection
      * @throws Exception
      */
     public function getNormalCategoryByParentId($parent_id = 0)

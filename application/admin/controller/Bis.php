@@ -59,13 +59,49 @@ class Bis extends Controller
         $bisData = model('Bis')->get($id);
         $locationData = model('BisLocation')->get(['bis_id' => $id, 'is_main' => 1]);
         $accountData = model('BisAccount')->get(['bis_id' => $id, 'is_main' => 1]);
+        $category_info = $this->getCategoryInfo($id);
         return $this->fetch('', [
             'citys' => $citys,
             'categorys' => $categorys,
             'bisData' => $bisData,
             'locationData' => $locationData,
             'accountData' => $accountData,
+            'category_info' => $category_info,
         ]);
+    }
+
+    /**
+     * 获取点击详情对应id的所属分类的二级分类信息
+     *
+     * @param $id
+     *
+     * @return mixed
+     * @throws \think\exception\DbException
+     */
+    public function getCategoryInfo($id)
+    {
+        $locationData = model('BisLocation')->get(['bis_id' => $id]);
+        $category_path_all = $locationData['category_path'];
+        $category_path = explode(',', $category_path_all);
+        //循环遍历 将所属分类中的主分类去掉
+        foreach ($category_path as $k => $v) {
+            if ($k == 0) {
+                unset($category_path[$k]);
+            }
+        }
+        $category_path = array_values($category_path); //设置数组从零开始
+        //通过二级分类的id来查询二级分类的名字
+        foreach ($category_path as $k => $v) {
+            $category_path_name[] = model('Category')->get($category_path[$k])['name'];
+        }
+        foreach ($category_path_name as $k => $v) {
+            foreach ($category_path as $kk => $vv) {
+                if ($k == $kk) {
+                    $category_info[$vv] = $v;
+                }
+            }
+        }
+        return $category_info;
     }
 
     /**
@@ -86,6 +122,18 @@ class Bis extends Controller
         } else {
             $this->error('状态更新失败');
         }
+    }
+
+    /**
+     * 删除门店
+     * @return mixed
+     */
+    public function dellist()
+    {
+        $bis = $this->obj->getBisByStatus(-1);
+        return $this->fetch('', [
+            'bis' => $bis
+        ]);
     }
 }
 

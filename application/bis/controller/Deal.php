@@ -13,9 +13,9 @@ class Deal extends Base
      */
     public function index()
     {
-        $bisId=$this->getLoginUser()->bis_id;
+        $bisId = $this->getLoginUser()->bis_id;
         $deal = model('Deal')->getDealByBisId($bisId);
-        return $this->fetch('',[
+        return $this->fetch('', [
             'deal' => $deal
         ]);
     }
@@ -31,6 +31,7 @@ class Deal extends Base
             //走插入逻辑
             $data = input('post.');
             //严格校验提交的数据
+//            print_r($data);die;
             $location = model('BisLocation')->get($data['location_ids'][0]);
             $deals = [
                 'bis_id' => $bisId,
@@ -44,8 +45,8 @@ class Deal extends Base
                 'end_time' => strtotime($data['end_time']),
                 'total_count' => $data['total_count'],
                 'origin_price' => $data['origin_price'],
-                'coupons_begin_time' => $data['coupons_begin_time'],
-                'coupons_end_time' => $data['coupons_end_time'],
+                'coupons_begin_time' => strtotime($data['coupons_begin_time']),
+                'coupons_end_time' => strtotime($data['coupons_end_time']),
                 'notes' => $data['notes'],
                 'description' => $data['description'],
                 'bis_account_id' => $this->getLoginUser()->id,

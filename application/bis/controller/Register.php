@@ -23,6 +23,8 @@ class Register extends Controller
     }
 
     /**
+     * 商户入驻申请
+     *
      * @throws \think\exception\DbException
      */
     public function add()
@@ -33,7 +35,7 @@ class Register extends Controller
         //获取表单的值 通过tp自带的方法结合php的方法来处理角本攻击(XSS)
         $data = input('post.');
         //检验数据
-        $validate = validate('bis');
+        $validate = validate('Bis');
         if (!$validate->scene('add')->check($data)) {
             $this->error($validate->getError());
         }
@@ -66,7 +68,7 @@ class Register extends Controller
         //总店相关信息检验
         $data['cat'] = '';
         if (!empty($data['se_category_id'])) {
-            $data['cat'] = implode('|', $data['se_category_id']);
+            $data['cat'] = implode(',', $data['se_category_id']);
         }
         //总店相关信息入库
         $locationData = [

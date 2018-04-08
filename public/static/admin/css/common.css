@@ -12,19 +12,19 @@
     color: #888888
 }
 
-/*商户简介*/
-.bis_introduction {
-    width: 80%;
-    height: 300px;
-}
+/*!*商户简介*!*/
+/*.bis_introduction {*/
+    /*width: 80%;*/
+    /*height: 300px;*/
+/*}*/
 
-/*门店信息*/
-.store_information {
-    width: 80%;
-    height: 300px;
-}
+/*!*门店信息*!*/
+/*.store_information {*/
+    /*width: 80%;*/
+    /*height: 300px;*/
+/*}*/
 
-/*团购*/
+/*script信息输入框(团购|商户简介|门店信息)*/
 .information{
     width: 80%;
     height: 300px;

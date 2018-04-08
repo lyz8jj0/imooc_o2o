@@ -23,4 +23,23 @@ class Featured extends BaseModel
         $result = $this->where($data)->order($order)->paginate();
         return $result;
     }
+
+    /**
+     * 根据类型来获取首页大图和广告位相关数据
+     *
+     * @param $type
+     *
+     * @return false|\PDOStatement|string|\think\Collection
+     * @throws Exception
+     */
+    public function getFeatured($type)
+    {
+        $data = [
+            'type' => $type,
+            'status' => 1,
+        ];
+        $order = ['id' => 'desc'];
+        $result = $this->where($data)->order($order)->select();
+        return $result;
+    }
 }

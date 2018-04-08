@@ -6,7 +6,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分店名称：</label>
             <div class="formControls col-xs-8 col-sm-3">
-                <input type="text" class="input-text" value="{$locationData.name}" placeholder="" id="" name="name">
+                <input type="text" class="input-text" value="{$store.name}" placeholder="" id="" name="name">
             </div>
         </div>
 
@@ -17,7 +17,7 @@
 				<select name="city_id" class="select cityId">
 					<option value="0">--请选择--</option>
 					{volist name="citys" id="vo"}
-					<option value="{$vo.id}" {if condition="$locationData.city_id eq $vo.id" } selected="selected" {/if}>{$vo.name}</option>
+					<option value="{$vo.id}" {if isset($store.city_id) && $store.city_id== $vo.id} selected="selected" {/if}>{$vo.name}</option>
                     {/volist}
 				</select>
 				</span>
@@ -25,7 +25,7 @@
             <div class="formControls col-xs-8 col-sm-2">
 				<span class="select-box">
 				<select name="se_city_id" class="select se_city_id">
-					<option value="0">{:getSeCityName($locationData.city_path)}</option>
+					<option value="0">{:getSeCityName($store.city_path)}</option>
 				</select>
 				</span>
             </div>
@@ -34,15 +34,13 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">缩略图：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <img id="upload_org_code_img" src="{$locationData.logo}" width="150" height="150">
+                <img id="upload_org_code_img" src="{$store.logo}" width="150" height="150">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">门店介绍：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <script id="editor" type="text/plain" class="store_information" name="content">{$locationData.content}
-
-                </script>
+                <script id="editor" type="text/plain" class="store_information" name="content">{$store.content}</script>
             </div>
         </div>
         <div class="row cl">
@@ -51,7 +49,8 @@
 				<select name="category_id" class="select categoryId">
 					<option value="0">--请选择--</option>
 					{volist name="categorys" id="vo"}
-					<option value="{$vo.id}" {if condition="$locationData.category_id eq $vo.id" } selected="selected" {/if}>{$vo.name}</option>
+					<option value="{$vo.id}" {if isset($store.category_id) && $store.category_id== $vo.id}
+                            selected="selected" {/if}>{$vo.name}</option>
                     {/volist}
 				</select>
 				</span>
@@ -67,45 +66,36 @@
                     <label for="checkbox-moban">&nbsp;</label>
                     {/volist}
                 </div>
-
-                <div class="check-box se_category_id">
-                </div>
+            </div>
+            <div class="check-box se_category_id">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">地址：</label>
             <div class="formControls col-xs-8 col-sm-3">
-                <input type="text" class="input-text" value="{$locationData.api_address}" placeholder="" id=""
-                       name="address">
+                <input type="text" class="input-text" value="{$store.api_address}" placeholder="" id="" name="address">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">电话:</label>
             <div class="formControls col-xs-8 col-sm-3">
-                <input type="text" class="input-text" value="{$locationData.tel}" placeholder="" id="" name="tel">
+                <input type="text" class="input-text" value="{$store.tel}" placeholder="" id="" name="tel">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">联系人:</label>
             <div class="formControls col-xs-8 col-sm-3">
-                <input type="text" class="input-text" value="{$locationData.contact}" placeholder="" id=""
-                       name="contact">
+                <input type="text" class="input-text" value="{$store.contact}" placeholder="" id="" name="contact">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">营业时间:</label>
             <div class="formControls col-xs-8 col-sm-3">
-                <input type="text" class="input-text" value="{$locationData.open_time}" placeholder="" id=""
-                       name="open_time">
+                <input type="text" class="input-text" value="{$store.open_time}" placeholder="" id="" name="open_time">
             </div>
         </div>
-        <!--<div class="row cl">-->
-            <!--<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">-->
-                <!--<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i-->
-                        <!--class="Hui-iconfont">&#xe632;</i> 申请-->
-                <!--</button>-->
-            <!--</div>-->
-        <!--</div>-->
+
+
     </form>
 </article>
 <!--包含尾部文件-->
