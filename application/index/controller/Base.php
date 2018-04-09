@@ -24,7 +24,10 @@ class Base extends Controller
         $this->assign('citys', $citys);
         $this->assign('city', $this->city);
         $this->assign('cats', $cats);
+        //不同模块会加载不同的css  所有需要在模板中引入不同的controller strtolower是将其变为小写
+        $this->assign('controller', strtolower(request()->controller()));
         $this->assign('user', $this->getLoginUser());
+        $this->assign('title', 'o2o团购网');
     }
 
     /**
@@ -67,7 +70,7 @@ class Base extends Controller
     public function getRecommendCats()
     {
         $parentIds = $sedcatArr = $recomCats = [];
-        $cats = model('Category')->getNormalRecommendCategoryByParentId(0, 5);
+        $cats = model('Category')->getNormalRecommendCategoryByParentId(0, 5);  //默认parentId为0，显示五条
         foreach ($cats as $v) {
             $parentIds[] = $v->id;
         }

@@ -12,12 +12,12 @@ class Index extends Base
         //商品分类，数据-美食 推荐的数据
         $datas = model('Deal')->getNormalDealByCategoryCityId(1, $this->city->id);
         //获取4个子分类
-//        $meshicates = model('Category')->getNormalRecommendCategoryByParentid(1, 4);
+        $meshicates = model('Category')->getNormalRecommendCategoryByParentid(1, 4);
         return $this->fetch('', [
             'homePigPictureInfo' => $homePigPictureInfo,
             'homeRightPictureInfo' => $homeRightPictureInfo,
             'datas' => $datas,
-//            'meishicates' => $meshicates,
+            'meishicates' => $meshicates,
         ]);
     }
 }

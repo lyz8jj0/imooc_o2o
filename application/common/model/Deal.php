@@ -48,19 +48,19 @@ class Deal extends BaseModel
     /**
      * 根据分类 以及 城市来获取 商品数据
      *
-     * @param     $id     (分类)
-     * @param     $cityId (城市)
-     * @param int $limit  (条数)
+     * @param     $id       (分类)
+     * @param     $cityPath (城市)
+     * @param int $limit    (条数)
      *
      * @return false|\PDOStatement|string|\think\Collection
      * @throws Exception
      */
-    public function getNormalDealByCategoryCityId($id, $cityId, $limit = 10)
+    public function getNormalDealByCategoryCityId($id, $cityPath, $limit = 10)
     {
         $data = [
             'end_time' => ['gt', time()], //结束时间大于当前时间
             'category_id' => $id,
-            'city_id' => $cityId,
+            'city_path' => $cityPath,
             'status' => 1,
         ];
         $order = [
@@ -73,5 +73,37 @@ class Deal extends BaseModel
             $result = $result->limit($limit);
         }
         return $result->select();
+    }
+
+    /**
+     * 根据状态获取团购商品信息
+     *
+     * @param int $status
+     *
+     * @throws \think\exception\DbException
+     */
+    public function getDealByStatus($status = 0)
+    {
+        $order = [
+            'id' => 'desc',
+        ];
+        $data = [
+            'status' => $status
+        ];
+        $result = $this->where($data)->order($order)->paginate(10);
+        return $result;
+    }
+
+    /**
+     * 查询商品列表数据
+     * @param $data
+     *
+     * @return false|\PDOStatement|string|\think\Collection
+     * @throws Exception
+     */
+    public function getDealByCondition($data)
+    {
+        $result = $this->where($data)->select();
+        return $result;
     }
 }

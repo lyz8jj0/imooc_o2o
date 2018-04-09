@@ -63,6 +63,7 @@ class Store extends Controller
      * 门店入驻申请详情数据
      *
      * @return mixed
+     * @throws \think\exception\DbException
      */
     public function detail()
     {

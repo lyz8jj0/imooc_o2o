@@ -32,12 +32,15 @@ class Featured extends Base
         if (request()->isPost()) {
             //入库的逻辑
             $data = input('post.');
+            //数据需要进行严格校验validate
             $validate = validate('Featured');
             $result = $validate->scene('add')->check($data);
             if (!$result) {
                 $this->error($validate->getError());
             }
-            //数据需要进行严格校验validate
+            if (!empty($data['id'])) {
+                return $this->update($data);
+            }
             $id = model("Featured")->add($data);
             if ($id) {
                 $this->success('添加成功');
@@ -53,6 +56,35 @@ class Featured extends Base
         }
     }
 
+    /**
+     * 更新推荐位的信息
+     *
+     * @param $data
+     */
+    public function update($data)
+    {
+        $res = $this->obj->save($data, ['id' => intval($data['id'])]);
+        if ($res) {
+            $this->success('更新成功', url('featured/index'));
+        } else {
+            $this->error('更新失败');
+        }
+    }
+
+    public function detail()
+    {
+        //获取推荐位类别
+        $data = input('');
+        $featured = $this->obj->get(['id' => $data['id']]);
+        $types = config('featured.featured_type');
+        return $this->fetch('', [
+            'types' => $types,
+            'featured' => $featured
+        ]);
+    }
+    /**
+     * base里面
+     */
 //    public function status()
 //    {
 //        //获取值

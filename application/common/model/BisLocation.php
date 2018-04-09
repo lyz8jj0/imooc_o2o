@@ -67,4 +67,21 @@ class BisLocation extends BaseModel
             ->select();
         return $result;
     }
+
+    /**
+     * 根据传过来的location_ids来获取分店信息
+     *
+     * @param $ids
+     *
+     * @return false|\PDOStatement|string|\think\Collection
+     * @throws Exception
+     */
+    public function getNormalLocationsInId($ids)
+    {
+        $data = [
+            'id' => ['in', $ids],
+            'status' => 1,
+        ];
+        return $this->where($data)->select();
+    }
 }

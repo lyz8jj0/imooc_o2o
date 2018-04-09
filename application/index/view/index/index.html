@@ -36,11 +36,10 @@
                     <div class="floor-header">
                         <h3>美食推荐</h3>
                         <ul class="reco-words">
-                            <li><a href="//t10.nuomi.com/pc/t10/index" target="_blank">精选品牌</a></li>
-                            <li><a href="//bj.nuomi.com/380" target="_blank">小吃快餐</a></li>
-                            <li><a href="//bj.nuomi.com/392" target="_blank">自助餐</a></li>
-                            <li><a href="//bj.nuomi.com/327" target="_blank">其他美食</a></li>
-                            <li><a class="no-right-border no-right-padding" target="_blank">全部<span
+                            {volist name="meishicates" id="vo"}
+                            <li><a href="{:url('lists/index', ['id' => $vo.id])}" target="_blank">{$vo.name}</a></li>
+                            {/volist}
+                            <li><a class="no-right-border no-right-padding" target="_blank" href="{:url('lists/index', ['id' => 1])}">全部<span
                                     class="all-cate-arrow"></span></a></li>
                         </ul>
                     </div>

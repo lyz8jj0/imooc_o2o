@@ -18,7 +18,8 @@ class Index extends Controller
 
     public function map()
     {
-        $res = \Map::staticimage('河北科技大学');
+        $res = \Map::staticimage('河北省保定市徐水县徐水综合高中');
+        print_r($res);
         return $res;
     }
 

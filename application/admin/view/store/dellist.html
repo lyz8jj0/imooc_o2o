@@ -26,7 +26,7 @@
                 <td class="text-c">{$vo.contact}</td>
                 <td class="text-c">{$vo.tel}</td>
                 <td>{$vo.create_time}</td>
-                <td class="td-status"><a href="{:url('store/status',['id' => $vo.id,'status' => 0])}" title="点击修改状态">{$vo.status|status}</a>
+                <td class="td-status"><a href="{:url('store/status',['id' => $vo.id,'status' => 0])}" title="点击修改状态">{$vo.status|status}
                 </td>
                 <td class="td-manage"><a style="text-decoration:none" class="ml-5"
                                          onClick="o2o_edit('删除的门店详情数据','{:url('store/detail',['id' => $vo.id])}')"

@@ -8,6 +8,13 @@
 namespace app\bis\controller;
 class Deal extends Base
 {
+    protected $obj;
+
+    public function _initialize()
+    {
+        $this->obj = model('Deal');
+    }
+
     /**
      * @return mixed 商户中心的 团购列表页
      */
@@ -31,7 +38,6 @@ class Deal extends Base
             //走插入逻辑
             $data = input('post.');
             //严格校验提交的数据
-//            print_r($data);die;
             $location = model('BisLocation')->get($data['location_ids'][0]);
             $deals = [
                 'bis_id' => $bisId,
@@ -40,6 +46,7 @@ class Deal extends Base
                 'category_id' => $data['category_id'],
                 'se_category_id' => empty($data['se_category_id']) ? '' : implode(',', $data['se_category_id']),
                 'city_id' => $data['city_id'],
+                'city_path' => $data['se_city_id'],
                 'location_ids' => empty($data['location_ids']) ? '' : implode(',', $data['location_ids']),
                 'start_time' => strtotime($data['start_time']),
                 'end_time' => strtotime($data['end_time']),
@@ -71,5 +78,23 @@ class Deal extends Base
                 'bislocations' => model('BisLocation')->getNormalLocationByBisId($bisId)
             ]);
         }
+    }
+
+    /**
+     * 商户团购商品修改
+     *
+     * @return mixed
+     */
+    public function edit()
+    {
+        $id = input('get.id');
+        $deal = $this->obj->get(['id' => $id]);
+        $citys = model('City')->getNormalCityByParentId();
+        $categorys = model('Category')->getNormalCategoryByParentId();
+        return $this->fetch('', [
+            'citys' => $citys,
+            'categorys' => $categorys,
+            'deal' => $deal,
+        ]);
     }
 }

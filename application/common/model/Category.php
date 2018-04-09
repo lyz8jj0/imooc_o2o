@@ -38,7 +38,7 @@ class Category extends Model
     }
 
     /**
-     * 集团后台 添加分类中的分类栏目 （获取一级分类）
+     * 集团后台 生活分类列表 （获取一级分类）
      *
      * @return |array
      * @throws \Exception
@@ -62,7 +62,7 @@ class Category extends Model
     /**
      * 获取详情下的所属分类(二级分类) 通过parentId
      *
-     * @param int $parent_id 默认查询没有父类的
+     * @param int $parent_id 默认查询没有父类的分类也就是一级分类
      *
      * @return false|\PDOStatement|string|\think\Collection
      * @throws Exception
