@@ -3,12 +3,12 @@
 <div class="container">
     <div class="top-container">
         <div class="mid-area">
-            <div class="slide-holder" id="slide-holder">
-                <a href="#" class="slide-prev"><i class="slide-arrow-left"></i></a>
-                <a href="#" class="slide-next"><i class="slide-arrow-right"></i></a>
-                <ul class="slideshow">
+            <div class="slide-holder">
+                <!--<a href="#" class="slide-prev"><i class="slide-arrow-left"></i></a>-->
+                <!--<a href="#" class="slide-next"><i class="slide-arrow-right"></i></a>-->
+                <ul class="slidepic">
                     {volist name="homePigPictureInfo" id="vo"}
-                    <li><a href="" class="item-large"><img class="ad-pic" src="{$vo.image}"/></a></li>
+                    <li><img src="{$vo.image}"/></li>
                     {/volist}
                 </ul>
 
